@@ -37,4 +37,4 @@ EventManagement::Application.configure do
   config.action_mailer.default_url_options = { :host => 'www.event_management.com' }
 
 end
-SUPERADMIN_SUBDOMAIN = "superadmin"
+ADMIN_SUBDOMAIN = "admin"

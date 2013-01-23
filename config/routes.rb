@@ -2,12 +2,12 @@ EventManagement::Application.routes.draw do
   devise_for :people  , :controllers => {:sessions => "sessions"}
 
 
-  constraints(:subdomain => SUPERADMIN_SUBDOMAIN) do
-    scope :module => "superadmin"    do
+  constraints(:subdomain => ADMIN_SUBDOMAIN) do
+    scope :module => "admin"    do
       resources :super_admins do
         collection do
           get :home
-          get :hello
+          get :admin_dashboard
           resources :company_admins
         end
 
