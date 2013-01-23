@@ -1,0 +1,2 @@
+module Superadmin::CompanyAdminsHelper
+end

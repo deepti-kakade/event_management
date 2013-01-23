@@ -1,2 +1,4 @@
 class CompanyAdminsController < ApplicationController
+
+
 end

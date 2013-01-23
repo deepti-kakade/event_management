@@ -1,60 +1,76 @@
 EventManagement::Application.routes.draw do
-  devise_for :people
+  devise_for :people  , :controllers => {:sessions => "sessions"}
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+  constraints(:subdomain => SUPERADMIN_SUBDOMAIN) do
+    scope :module => "superadmin"    do
+      resources :super_admins do
+        collection do
+          get :home
+          get :hello
+          resources :company_admins
+        end
 
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+      end
+      root :to => "super_admins#home"
+    end
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  end
 
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-  root :to => "home#index"
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+# The priority is based upon order of creation:
+# first created -> highest priority.
 
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
+# Sample of regular route:
+#   match 'products/:id' => 'catalog#view'
+# Keep in mind you can assign values other than :controller and :action
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+# Sample of named route:
+#   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+# This route can be invoked with purchase_url(:id => product.id)
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+# Sample resource route (maps HTTP verbs to controller actions automatically):
+#   resources :products
 
-  # See how all your routes lay out with "rake routes"
+# Sample resource route with options:
+#   resources :products do
+#     member do
+#       get 'short'
+#       post 'toggle'
+#     end
+#
+#     collection do
+#       get 'sold'
+#     end
+#   end
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+# Sample resource route with sub-resources:
+#   resources :products do
+#     resources :comments, :sales
+#     resource :seller
+#   end
+
+# Sample resource route with more complex sub-resources
+#   resources :products do
+#     resources :comments
+#     resources :sales do
+#       get 'recent', :on => :collection
+#     end
+#   end
+
+# Sample resource route within a namespace:
+#   namespace :admin do
+#     # Directs /admin/products/* to Admin::ProductsController
+#     # (app/controllers/admin/products_controller.rb)
+#     resources :products
+#   end
+
+# You can have the root of your site routed with "root"
+# just remember to delete public/index.html.
+# root :to => 'welcome#index'
+
+# See how all your routes lay out with "rake routes"
+
+# This is a legacy wild controller route that's not recommended for RESTful applications.
+# Note: This route will make all actions in every controller accessible via GET requests.
+# match ':controller(/:action(/:id))(.:format)'
 end
