@@ -7,7 +7,11 @@ gem 'rails', '3.2.9'
 
 gem 'mysql2'
 gem 'devise'
-
+gem 'hirb'
+gem 'therubyracer'
+gem 'less-rails'
+#adding bootstrap gem
+gem 'twitter-bootstrap-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

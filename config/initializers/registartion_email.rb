@@ -7,3 +7,4 @@ ActionMailer::Base.smtp_settings = {
     :user_name          => "pansingh@weboniselab.com",
     :password           => "pansingh6186"
 }
+ActionMailer::Base.default_url_options[:host] = "admin.event_management.com"

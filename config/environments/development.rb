@@ -34,7 +34,7 @@ EventManagement::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  config.action_mailer.default_url_options = { :host => 'www.event_management.com' }
+  config.action_mailer.default_url_options = { :host => 'admin.event_management.com' }
 
 end
 ADMIN_SUBDOMAIN = "admin"

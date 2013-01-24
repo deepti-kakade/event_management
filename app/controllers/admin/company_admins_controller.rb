@@ -5,13 +5,14 @@ class Admin::CompanyAdminsController < ApplicationController
   end
 
   def create
-    password = ActiveSupport::SecureRandom.base64(6)
+    password = p SecureRandom.base64(16)
     @company_admin = CompanyAdmin.new(:first_name => params[:first_name], :last_name => params[:last_name],
-                                      :email => params[:email], :password => password, :company_name => params[:company_name])
+                                      :email => params[:email], :password => password)
 
     if @company_admin.save!
-      UserMailer.registration_email(@company_admin).deliver
-      redirect_to root_url
+      UserMailer.registration_email(@company_admin, password).deliver
+      redirect_to admin_dashboard_super_admins_path
+      flash[:success] = "Email has sent successfully"
     else
       render 'new'
     end

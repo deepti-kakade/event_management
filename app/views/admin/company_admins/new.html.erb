@@ -2,38 +2,30 @@
   <div class="span5 offset2">
     <h1> </h1>
 
-    <%= form_for(@comapny_admin, :url => company_admins_path, :method => :post) do |f| %>
+    <%= form_tag('/super_admins/company_admins') do  %>
 
-        <div class="control-group">
-          <%= f.label :first_name, "First Name", :class => 'control-label'  %>
-          <div class="controls">
-            <%= f.text_field :first_name, :class => 'text_field' %>
+        <div>
+          <%= label_tag "First Name"  %>
+          <div>
+            <%= text_field_tag "first_name" %>
           </div>
         </div>
-        <div class="control-group">
-          <%= f.label :last_name, "Last Name", :class => 'control-label'  %>
-          <div class="controls">
-            <%= f.text_field :last_name, :class => 'text_field' %>
+        <div>
+          <%= label_tag "Last Name" %>
+          <div>
+            <%= text_field_tag "last_name"%>
           </div>
         </div>
-        <div class="control-group">
-          <%= f.label :email, "Email ID", :class => 'control-label'  %>
-          <div class="controls">
-            <%= f.text_field :email , :class => 'text_field' %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :company_name, "Company Name", :class => 'control-label'  %>
-          <div class="controls">
-            <%= f.text_field :company_name , :class => 'text_field' %>
+        <div>
+          <%= label_tag "Email ID" %>
+          <div>
+            <%= text_field_tag "email" %>
           </div>
         </div>
 
-
-        <div class="control-group" id="customText">
-          <div class="controls">
-            <div><%= f.submit "SIGN IN", :class => "btn btn-primary" %></div>
+        <div>
+          <div>
+            <div><%= submit_tag "SIGN Up"%></div>
           </div>
         </div>
 

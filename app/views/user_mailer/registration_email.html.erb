@@ -1,1 +1,5 @@
-<p>You have Logged in Successfully as company Admin for Event Management</p>
+<h4>Hi <%= @company_admin.first_name %>,</h4>
+<p>You have Signed Successfully as Company Admin for Event Management</p>
+<h4>Your Email :<%= @company_admin.email %></h4>
+<h4>Your Password : <%= @password %></h4>
+<%= link_to "Sign In" ,new_person_session_url %>
