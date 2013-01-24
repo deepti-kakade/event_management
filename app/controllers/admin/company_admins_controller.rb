@@ -9,9 +9,8 @@ class Admin::CompanyAdminsController < ApplicationController
     password = p SecureRandom.base64(16)
     @company_admin = CompanyAdmin.new(params[:company_admin])
     @company_admin.password = password
-
+    @company_admin.member_type = "company_admin"
     @company = @company_admin.build_company
-    logger.info("########################################33#{params[:company_attributes].inspect}")
     @company.attributes = params[:company_admin][:company_attributes]
 
     if @company_admin.save!
@@ -21,6 +20,7 @@ class Admin::CompanyAdminsController < ApplicationController
     else
       render 'new'
     end
-    #  render json:[params]
   end
+
+
 end

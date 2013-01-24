@@ -16,7 +16,11 @@ EventManagement::Application.routes.draw do
     end
 
   end
-
+  resources :company_admins do
+    collection do
+      get :company_admin_dashboard
+    end
+  end
 # The priority is based upon order of creation:
 # first created -> highest priority.
 
