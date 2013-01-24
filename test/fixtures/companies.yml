@@ -2,12 +2,12 @@
 
 one:
   company_name: MyString
-  address: MyString
-  description: MyString
-  logo: MyString
+  type: 
+  location: MyString
+  company_admin_id: 1
 
 two:
   company_name: MyString
-  address: MyString
-  description: MyString
-  logo: MyString
+  type: 
+  location: MyString
+  company_admin_id: 1
