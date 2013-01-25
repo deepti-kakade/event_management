@@ -23,9 +23,11 @@ EventManagement::Application.routes.draw do
     end
 
   end
- resources :users do
-   get :user_dashboard
-end
+  resources :users do
+    get :user_dashboard
+    get :create_profile
+    post :save_profile
+  end
 # The priority is based upon order of creation:
 # first created -> highest priority.
 

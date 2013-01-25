@@ -1,5 +1,5 @@
 <div class="span7 offset2">
-  <%= form_for("person", :url => person_session_path) do |f| %>
+  <%= form_for("person", :url => person_session_path, :html => { :class => "form-horizontal event_signin"} ) do |f| %>
       <div class="control-group">
         <%= f.label :email, "Email ID", :class => 'control-label'  %>
         <div class="controls">
@@ -15,7 +15,7 @@
       </div>
 
 
-      <div class="control-group" id="customText">
+      <div class="control-group">
         <div class="controls">
           <div><%= f.submit "SIGN IN", :class => "btn btn-primary" %></div>
         </div>

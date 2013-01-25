@@ -1,56 +1,58 @@
 <div class="row">
-  <div class="span5 offset2">
-    <h1> </h1>
+  <div class="span5 offset3" id="sign_up_form">
+    <fieldset>
+      <legend> Create Company </legend>
+    <%= form_for @company_admin, :method => :post, :html => { :class => "form-horizontal event_signin"}  do |f|  %>
 
-    <%= form_for @company_admin, :method => :post do |f|  %>
-
-        <div>
-          <%= f.label :first_name ,"First Name "  %>
-          <div>
-            <%= f.text_field :first_name %>
+        <div class="control-group">
+          <%= f.label :first_name ,"First Name ", :class =>"control-label"  %>
+          <div class="controls">
+            <%= f.text_field :first_name, :class => 'text_field' %>
           </div>
         </div>
-        <div>
-          <%= f.label :last_name , "Last Name" %>
-          <div>
-            <%= f.text_field :last_name%>
+        <div class="control-group">
+          <%= f.label :last_name , "Last Name",:class =>"control-label" %>
+          <div class="controls">
+            <%= f.text_field :last_name, :class => 'text_field'%>
           </div>
         </div>
-        <div>
-          <%= f.label :email, "Email Id" %>
-          <div>
-            <%= f.text_field :email%>
+        <div class="control-group">
+          <%= f.label :email, "Email Id",:class =>"control-label" %>
+          <div class="controls">
+            <%= f.text_field :email, :class => 'text_field'%>
           </div>
         </div>
 
         <%= f.fields_for :company do |company| %>
-            <div>
-              <%= company.label :company_name ,"Company Name "  %>
-              <div>
-                <%= company.text_field :company_name %>
+            <div class="control-group">
+              <%= company.label :company_name ,"Company Name " ,:class =>"control-label" %>
+              <div class="controls">
+                <%= company.text_field :company_name, :class => 'text_field'%>
               </div>
             </div>
-            <div>
-              <%= company.label :type_of_company , "Type of company" %>
-              <div>
-                <%= company.text_field :type_of_company%>
+            <div class="control-group">
+              <%= company.label :type_of_company , "Type of company",:class =>"control-label" %>
+              <div class="controls">
+                <%= company.text_field :type_of_company, :class => 'text_field'%>
               </div>
             </div>
-            <div>
-              <%= company.label :location, "Location" %>
-              <div>
-                <%= company.text_field :location%>
+            <div class="control-group">
+              <%= company.label :location, "Location",:class =>"control-label"%>
+              <div class="controls">
+                <%= company.text_field :location, :class => 'text_field'%>
               </div>
             </div>
         <% end %>
 
-        <div>
-          <div>
-            <div><%= f.submit "SIGN Up"%></div>
+        <div class="control-group">
+          <div class="controls">
+            <div></div>
+            <div><%= f.submit "Sign Up", :class => "btn btn-primary sign-up-btn" %></div>
           </div>
         </div>
 
     <% end %>
+        </fieldset>
   </div>
 
 

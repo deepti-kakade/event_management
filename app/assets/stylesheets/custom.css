@@ -1,0 +1,51 @@
+.links{
+    margin-top: 100px;
+}
+
+/*footer*/
+#sfg_footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #98d9ee;
+    height: 60px;
+}
+
+.sfg_footer_container  {
+    display: block;
+}
+
+.sfg_muted{
+    float: right;
+    margin-right: 0px;
+    color: #000000;
+    margin-top: 35px;
+}
+
+
+.event_signin{
+    padding:70px;
+}
+
+#color-navbarinner {
+    background-color: #f6fab8;
+}
+
+.sign-up-btn{
+    float: right;
+}
+
+#sign_up_form fieldset {
+    border: 1px solid black;
+    margin: 0;
+    padding: 16px;
+}
+
+#sign_up_form fieldset legend {
+    font-size: 12px;
+    line-height: 10px;
+    margin-bottom: 0;
+    padding: 0;
+    width: 80px;
+}

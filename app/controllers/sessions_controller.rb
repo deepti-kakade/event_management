@@ -12,9 +12,15 @@ class SessionsController < Devise::SessionsController
         redirect_to  company_admin_dashboard_company_admin_path(current_person)
       elsif person.member_type.include?("user")
       sign_in person
-      redirect_to  user_user_dashboard_path(current_person)
+      if person.sign_in_count == 1
+       redirect_to user_create_profile_path(current_person)
       else
+        redirect_to  user_user_dashboard_path(current_person)
+      end
 
+      else
+        sign_in person
+        redirect_to  admin_dashboard_super_admins_path
       end
 
     else
