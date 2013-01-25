@@ -8,19 +8,24 @@ EventManagement::Application.routes.draw do
         collection do
           get :home
           get :admin_dashboard
-          resources :company_admins
+
         end
 
+      end
+      resources :company_admins do
+        member do
+          get :company_admin_dashboard
+          get :create_user
+          post :save_user
+        end
       end
       root :to => "super_admins#home"
     end
 
   end
-  resources :company_admins do
-    collection do
-      get :company_admin_dashboard
-    end
-  end
+ resources :users do
+   get :user_dashboard
+end
 # The priority is based upon order of creation:
 # first created -> highest priority.
 

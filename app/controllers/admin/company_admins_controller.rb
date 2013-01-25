@@ -23,4 +23,28 @@ class Admin::CompanyAdminsController < ApplicationController
   end
 
 
+  def company_admin_dashboard
+
+  end
+
+  def create_user
+    @company_admin = CompanyAdmin.find(params[:id])
+    @company = @company_admin.company
+    @user = @company.users.new
+  end
+
+  def save_user
+    @company_admin = CompanyAdmin.find(params[:id])
+    @company = @company_admin.company
+    @user =  @company.users.create(params[:user])
+    @user.member_type = "user"
+
+    if @user.save!
+      UserMailer.registration_email(@user, @user.password).deliver
+      flash[:success] = "User Created Successfully"
+      redirect_to company_admin_dashboard_company_admin_path
+    end
+
+  end
+
 end

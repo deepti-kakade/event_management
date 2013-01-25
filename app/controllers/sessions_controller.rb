@@ -9,11 +9,14 @@ class SessionsController < Devise::SessionsController
     if person.present? && person.valid_password?(params[:person][:password])
       if person.member_type.include?("company_admin")
         sign_in person
-        redirect_to  company_admin_dashboard_company_admins_path
-      else
+        redirect_to  company_admin_dashboard_company_admin_path(current_person)
+      elsif person.member_type.include?("user")
       sign_in person
-      redirect_to  admin_dashboard_super_admins_path
+      redirect_to  user_user_dashboard_path(current_person)
+      else
+
       end
+
     else
       flash[:error] = 'Invalid email/password'
       render 'new'
