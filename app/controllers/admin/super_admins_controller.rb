@@ -3,6 +3,6 @@ class Admin::SuperAdminsController < ApplicationController
 
   end
   def admin_dashboard
-
+  @companies = Company.all
   end
 end

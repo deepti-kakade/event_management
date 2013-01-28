@@ -3,20 +3,20 @@
   <div class="span5 offset3" id="sign_up_form">
     <fieldset>
       <legend> Fill Profile </legend>
-      <%= form_for @user_profile, :url => user_save_profile_path(@user.id),:method => :post, :html => { :class => "form-horizontal event_signin"}  do |f|  %>
+      <%= form_for @user_profile, :url => save_profile_user_path(@user.id),:method => :post, :html => { :class => "form-horizontal event_signin"}  do |f|  %>
 
-         <!-- <div class="control-group">
-            <%#= f.label :first_name ,"First Name ", :class =>"control-label"  %>
+          <div class="control-group">
+            <%= f.label :first_name ,"First Name ", :class =>"control-label"  %>
             <div class="controls">
-              <%#= text_field_tag :first_name %>
+              <%= text_field_tag :first_name %>
             </div>
           </div>
           <div class="control-group">
-            <%#= f.label :last_name , "Last Name",:class =>"control-label" %>
+            <%= f.label :last_name , "Last Name",:class =>"control-label" %>
             <div class="controls">
-              <%#= text_field_tag :last_name%>
+              <%= text_field_tag :last_name%>
             </div>
-          </div>      -->
+          </div>
           <div class="control-group">
             <%= f.label :address, "Address",:class =>"control-label" %>
             <div class="controls">
@@ -39,7 +39,19 @@
       <% end %>
     </fieldset>
   </div>
-
-
-
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var first_name = new LiveValidation('first_name');
+        first_name.add( Validate.Presence );
+
+        var last_name = new LiveValidation('last_name');
+        last_name.add( Validate.Presence );
+
+        var contact = new LiveValidation('user_profile_contact');
+        contact.add( Validate.Presence );
+        contact.add( Validate.Length, { is: 10 } );
+
+    });
+</script>

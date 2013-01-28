@@ -1,4 +1,6 @@
 class User < Person
+  has_many :comments, :through => :events
+  has_many :events, :dependent => :destroy
   has_one :user_profile, :dependent => :destroy
   belongs_to :company
   accepts_nested_attributes_for :user_profile

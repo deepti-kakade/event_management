@@ -2,59 +2,58 @@
   <div class="span5 offset3" id="sign_up_form">
     <fieldset>
       <legend> Create Company </legend>
-    <%= form_for @company_admin, :method => :post, :html => { :class => "form-horizontal event_signin"}  do |f|  %>
+      <%= form_for @company_admin, :method => :post, :html => { :class => "form-horizontal event_signin"}  do |f|  %>
 
-        <div class="control-group">
-          <%= f.label :first_name ,"First Name ", :class =>"control-label"  %>
-          <div class="controls">
-            <%= f.text_field :first_name, :class => 'text_field' %>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= f.label :last_name , "Last Name",:class =>"control-label" %>
-          <div class="controls">
-            <%= f.text_field :last_name, :class => 'text_field'%>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= f.label :email, "Email Id",:class =>"control-label" %>
-          <div class="controls">
-            <%= f.text_field :email, :class => 'text_field'%>
-          </div>
-        </div>
-
-        <%= f.fields_for :company do |company| %>
-            <div class="control-group">
-              <%= company.label :company_name ,"Company Name " ,:class =>"control-label" %>
-              <div class="controls">
-                <%= company.text_field :company_name, :class => 'text_field'%>
-              </div>
+          <div class="control-group">
+            <%= f.label :email, "Email Id",:class =>"control-label" %>
+            <div class="controls">
+              <%= f.text_field :email, :class => 'text_field'%>
             </div>
-            <div class="control-group">
-              <%= company.label :type_of_company , "Type of company",:class =>"control-label" %>
-              <div class="controls">
-                <%= company.text_field :type_of_company, :class => 'text_field'%>
-              </div>
-            </div>
-            <div class="control-group">
-              <%= company.label :location, "Location",:class =>"control-label"%>
-              <div class="controls">
-                <%= company.text_field :location, :class => 'text_field'%>
-              </div>
-            </div>
-        <% end %>
-
-        <div class="control-group">
-          <div class="controls">
-            <div></div>
-            <div><%= f.submit "Sign Up", :class => "btn btn-primary sign-up-btn" %></div>
           </div>
-        </div>
 
-    <% end %>
-        </fieldset>
+          <%= f.fields_for :company do |company| %>
+              <div class="control-group">
+                <%= company.label :company_name ,"Company Name " ,:class =>"control-label" %>
+                <div class="controls">
+                  <%= company.text_field :company_name, :class => 'text_field'%>
+                </div>
+              </div>
+              <div class="control-group">
+                <%= company.label :type_of_company , "Type of company",:class =>"control-label" %>
+                <div class="controls">
+                  <%= company.text_field :type_of_company, :class => 'text_field'%>
+                </div>
+              </div>
+              <div class="control-group">
+                <%= company.label :location, "Location",:class =>"control-label"%>
+                <div class="controls">
+                  <%= company.text_field :location, :class => 'text_field'%>
+                </div>
+              </div>
+          <% end %>
+
+          <div class="control-group">
+            <div class="controls">
+              <div></div>
+              <div><%= f.submit "Sign Up", :class => "btn btn-primary sign-up-btn" %></div>
+            </div>
+          </div>
+
+      <% end %>
+    </fieldset>
   </div>
-
-
-
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var company_admin_email = new LiveValidation('company_admin_email');
+        company_admin_email.add( Validate.Presence );
+        company_admin_email.add( Validate.Email );
+
+        var company_name = new LiveValidation('company_admin_company_attributes_company_name');
+        company_name.add( Validate.Presence );
+
+        var company_type = new LiveValidation('company_admin_company_attributes_type_of_company');
+        company_type.add( Validate.Presence );
+
+    });
+</script>
