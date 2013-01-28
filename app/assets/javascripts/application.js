@@ -12,6 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+// =require jquery-ui-timepicker-addon
 //= require livevalidation_standalone
 //= require twitter/bootstrap
 //= require_tree .
+$(document).ready(function() {
+
+
+    $('#event_start_time').datetimepicker({
+//        timeFormat: "hh:mm tt"
+    });
+});
+
+
+
+

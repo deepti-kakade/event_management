@@ -58,15 +58,42 @@
                   <li><%#= link_to "Invite Manually"%></li>
                 </ul>
               </li>     -->
-              <li class="divider-vertical"></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Change Password" , :class => "" %></li>
-                  <li class="divider"></li>
-                  <li><%= link_to "Sign out" ,destroy_person_session_path, :method => :delete, :class => "" %></li>
-                </ul>
-              </li>
+             <% if current_person.member_type.include?("user")%>
+                  <li class="divider-vertical"></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello, <%= current_person.first_name%> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Update Profile" , create_profile_user_path(current_person),:class => "" %></li>
+                      <li class="divider"></li>
+                      <li><%= link_to "Change Password" , :class => "" %></li>
+                      <li class="divider"></li>
+                      <li><%= link_to "Sign out" ,destroy_person_session_path, :method => :delete, :class => "" %></li>
+                    </ul>
+                  </li>
+                  <%elsif current_person.member_type.include?("company_admin")%>
+                  <li class="divider-vertical"></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello, <%= current_person.first_name%> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Update Profile",:class => "" %></li>
+                      <li class="divider"></li>
+                      <li><%= link_to "Change Password" , :class => "" %></li>
+                      <li class="divider"></li>
+                      <li><%= link_to "Sign out" ,destroy_person_session_path, :method => :delete, :class => "" %></li>
+                    </ul>
+                  </li>
+                  <%else%>
+                  <li class="divider-vertical"></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Change Password" , :class => "" %></li>
+                      <li class="divider"></li>
+                      <li><%= link_to "Sign out" ,destroy_person_session_path, :method => :delete, :class => "" %></li>
+                    </ul>
+                  </li>
+              <%end%>
+
            <% end %>
         </ul>
       </div><!--/.nav-collapse -->

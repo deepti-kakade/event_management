@@ -24,7 +24,8 @@ class Admin::CompanyAdminsController < ApplicationController
 
 
   def company_admin_dashboard
-
+    @company_admin = CompanyAdmin.find(current_person.id)
+    @company_users = @company_admin.company.users
   end
 
   def create_user

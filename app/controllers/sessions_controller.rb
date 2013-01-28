@@ -13,7 +13,7 @@ class SessionsController < Devise::SessionsController
       elsif person.member_type.include?("user")
       sign_in person
       if person.sign_in_count == 1
-       redirect_to user_create_profile_path(current_person)
+       redirect_to create_profile_user_path(current_person)
       else
         redirect_to  user_dashboard_user_path(current_person)
       end

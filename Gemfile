@@ -12,6 +12,8 @@ gem 'therubyracer'
 gem 'less-rails'
 #adding bootstrap gem
 gem 'twitter-bootstrap-rails'
+gem 'carrierwave'
+gem 'mini_magick'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
