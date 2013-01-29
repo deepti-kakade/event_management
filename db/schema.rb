@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128065522) do
+ActiveRecord::Schema.define(:version => 20130129090135) do
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130128065522) do
     t.integer  "company_admin_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "logo"
   end
 
   create_table "company_admins", :force => true do |t|
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20130128065522) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "company_id"
+    t.string   "logo"
   end
 
   create_table "people", :force => true do |t|
@@ -63,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20130128065522) do
     t.string   "last_name"
     t.string   "member_type"
     t.integer  "company_id"
+    t.boolean  "banned"
   end
 
   add_index "people", ["email"], :name => "index_people_on_email", :unique => true

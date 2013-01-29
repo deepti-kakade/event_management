@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  # before_filter :deny_banned
+
   def user_dashboard
    @user = User.find(current_person)
    @user_company = @user.company
@@ -19,5 +21,16 @@ class UsersController < ApplicationController
       @user.update_attribute(:last_name, params[:last_name])
       redirect_to user_dashboard_user_path(@user)
     end
+  end
+
+  protected
+  def deny_banned
+    if current_person.banned?
+      redirect_to root_path, :notice => "You are banned from this site."
     end
+  end
+
+   #def active_for_authentication?
+   #  super && !self.blocked
+   #end
 end

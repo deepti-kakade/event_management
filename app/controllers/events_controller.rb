@@ -19,4 +19,8 @@ class EventsController < ApplicationController
       render 'new'
     end
   end
+
+  def update_event_status
+
+  end
 end

@@ -8,15 +8,27 @@ class SessionsController < Devise::SessionsController
     person = Person.find_by_email(params[:person][:email])
     if person.present? && person.valid_password?(params[:person][:password])
       if person.member_type.include?("company_admin")
-        sign_in person
-        redirect_to  company_admin_dashboard_company_admin_path(current_person)
+
+        if person.banned?
+          flash[:error] = "You are banned from this site"
+          redirect_to root_path
+        else
+          sign_in person
+          redirect_to  company_admin_dashboard_company_admin_path(current_person)
+        end
+
       elsif person.member_type.include?("user")
-      sign_in person
-      if person.sign_in_count == 1
-       redirect_to create_profile_user_path(current_person)
-      else
-        redirect_to  user_dashboard_user_path(current_person)
-      end
+        if person.banned?
+          flash[:error] = "You are banned from this site"
+          redirect_to root_path
+        else
+          sign_in person
+          if person.sign_in_count == 1
+            redirect_to create_profile_user_path(current_person)
+          else
+            redirect_to  user_dashboard_user_path(current_person)
+          end
+        end
 
       else
         sign_in person

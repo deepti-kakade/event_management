@@ -5,4 +5,5 @@ class Admin::SuperAdminsController < ApplicationController
   def admin_dashboard
   @companies = Company.all
   end
+
 end

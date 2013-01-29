@@ -1,0 +1,1 @@
+EVENT_STATUS = %w[pending accepted rejected]

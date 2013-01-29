@@ -5,6 +5,6 @@ class User < Person
   belongs_to :company
   accepts_nested_attributes_for :user_profile
   attr_accessible :company_id, :first_name, :last_name, :user_profile_attributes
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  #validates :first_name, presence: true
+  #validates :last_name, presence: true
 end

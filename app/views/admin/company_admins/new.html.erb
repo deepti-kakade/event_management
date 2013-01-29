@@ -19,6 +19,12 @@
                 </div>
               </div>
               <div class="control-group">
+                <%= company.label :logo ,"Company Logo " ,:class =>"control-label" %>
+                <div class="controls">
+                  <%= company.file_field :logo, :class => 'text_field'%>
+                </div>
+              </div>
+              <div class="control-group">
                 <%= company.label :type_of_company , "Type of company",:class =>"control-label" %>
                 <div class="controls">
                   <%= company.text_field :type_of_company, :class => 'text_field'%>

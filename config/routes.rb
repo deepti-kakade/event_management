@@ -8,9 +8,13 @@ EventManagement::Application.routes.draw do
         collection do
           get :home
           get :admin_dashboard
-
+        resources :company_admins do
+          put :suspend_login
+          put :un_suspend_login
+          get :get_users
         end
-
+        resources :companies
+        end
       end
       resources :company_admins do
         member do

@@ -1,0 +1,29 @@
+<div id="get_users_mymodal" class="modal hide fade in" aria-hidden="true" style = "display: none; ">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <div id="company_view" >
+      <fieldset>
+        <legend>Company Users</legend>
+        <h5> Users</h5>
+        <ol>
+          <% if users.present? %>
+              <% users.each do |user|%>
+
+                  <li><%= user.email%></li>
+
+              <%end %>
+          <% else %>
+              None
+          <% end %>
+        </ol>
+        <%#= link_to "Back", show_admin_dashboard_admins_path, :class => "btn btn-large btn-primary" ,id:"create_cause_btn" %>
+      </fieldset>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal" >Close</a>
+  </div>
+</div>

@@ -17,9 +17,16 @@
             </div>
           </div>
           <div class="control-group">
+            <%= f.label :logo , "Upload Logo",:class =>"control-label" %>
+            <div class="controls">
+              <%= f.file_field :logo, :class => 'text_field'%>
+            </div>
+          </div>
+          <div class="control-group">
             <%= f.label :start_time, "Start Time",:class =>"control-label" %>
             <div class="controls">
-              <%= f.text_field :start_time, :class => "hasDatepicker", :id => "event_start_time"%>
+              <%= f.text_field  :start_time, :class => "hasDatepicker", :id => "event_start_time"%>
+
             </div>
           </div>
           <div class="control-group">
@@ -42,20 +49,20 @@
 </div>
 
 <!--<script type="text/javascript">-->
-//    $(document).ready(function() {
-//
-//        $('#event_start_time').datetimepicker({
-//            timeFormat: "hh:mm tt"
-//        });
-//       var event_name = new LiveValidation('event_event_name');
-//       event_name.add( Validate.Presence );
-//
-//        var start_time = new LiveValidation('event_start_time');
-//        start_time.add( Validate.Presence );
-//
-//        var end_time = new LiveValidation('event_end_time');
-//        end_time.add( Validate.Presence );
-//
-//
-//    });
+<!--//    $(document).ready(function() {-->
+<!--//-->
+<!--//        $('#event_start_time').datetimepicker({-->
+<!--//            timeFormat: "hh:mm tt"-->
+<!--//        });-->
+<!--//       var event_name = new LiveValidation('event_event_name');-->
+<!--//       event_name.add( Validate.Presence );-->
+<!--//-->
+<!--//        var start_time = new LiveValidation('event_start_time');-->
+<!--//        start_time.add( Validate.Presence );-->
+<!--//-->
+<!--//        var end_time = new LiveValidation('event_end_time');-->
+<!--//        end_time.add( Validate.Presence );-->
+<!--//-->
+<!--//-->
+<!--//    });-->
 <!--</script>-->

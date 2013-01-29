@@ -49,3 +49,205 @@
     padding: 0;
     width: 80px;
 }
+
+
+/*box*/
+.box {
+    background: url("/assets/bg/bg_main.jpg") repeat scroll 0 0 #CCCCCC;
+    border: 1px solid #DDDDDD;
+    padding: 15px 15px 0;
+}
+
+.with_border {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    padding: 3px;
+}
+img {
+    border: 0 none;
+}
+img {
+    color: transparent;
+    font-size: 0;
+    vertical-align: middle;
+}
+
+.broadcast_thumb {
+    text-align: center;
+}
+
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, meter, nav, object, ol, output, p, pre, progress, q, rp, rt, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video, xmp {
+    font-size: 100%;
+}
+
+
+.rounded {
+    border-radius: 3px 3px 3px 3px;
+}
+.shadow {
+    box-shadow: 0 8px 6px -6px #999999;
+}
+
+.tab_content {
+    background: url("/assets/bg/bg_light.jpg") repeat scroll 0 0 #EEEEEE;
+    border-top-left-radius: 0;
+    clear: both;
+    margin: 0 0 15px;
+    padding: 15px;
+}
+
+
+.broadcast_thumb.last {
+    margin-right: 0;
+}
+
+.tab_content p {
+    margin: 0 0 15px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.mini {
+    font-size: 85%;
+}
+p {
+    margin: 0 0 10px;
+}
+
+.tab_content h4 {
+    margin: 3px 0 0;
+}
+h4 {
+    font-size: 15px;
+    line-height: 20px;
+    margin: 0 0 5px;
+}
+
+
+.grid_15 {
+    width: 590px;
+}
+
+.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12, .grid_13, .grid_14, .grid_15, .grid_16, .grid_17, .grid_18, .grid_19, .grid_20, .grid_21, .grid_22, .grid_23, .grid_24 {
+    display: inline;
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.show_admin_dashboard_td2{
+    width :200px;
+}
+
+#company_view fieldset {
+    border: 1px solid black;
+    margin: 0;
+    padding: 16px;
+}
+
+#company_view fieldset legend {
+    font-size: 13px;
+    line-height: 40px;
+    margin-bottom: 0;
+    padding: 0;
+    width: 87px;
+}
+
+table#show_table {
+    border-collapse: separate;
+    border-spacing: 7px;
+}
+
+
+#content {
+    background: url(".img/content-bg.gif") repeat-y scroll 0 0 #242424;
+    font-size: 0.9em;
+    margin: 23px auto 0;
+    text-align: left;
+    width: 980px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#column-1 {
+    float: right;
+    width: 650px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#column-2 {
+    float: left;
+    width: 300px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.cleaner {
+    clear: both;
+    content: " ";
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+html, body {
+    height: 100%;
+}
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, meter, nav, object, ol, output, p, pre, progress, q, rp, rt, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video, xmp {
+    border: 0 none;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+}
+h3 {
+    background: url(".img/h3-bg.gif") no-repeat scroll 0 54% transparent;
+    color: #FDFDFD;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 1.4em;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+    padding-left: 18px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img.image-main {
+    border: 1px solid #AFBC25;
+    margin: 0.2em 0 0.6em;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#column-1 #column-11 {
+    float: left;
+    width: 330px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+#column-1 #column-11 {
+    float: left;
+    width: 330px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
