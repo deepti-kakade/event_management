@@ -15,38 +15,43 @@
       </div>
       <div id="column-12">
         <%if event.id % 3 == 0 %>
+            <%= image_tag event.logo.thumb.url, :class =>"with_border"%>
+            <h3><%= event.event_name%></h3>
         <% end%>
       </div>
     </div>
     <div id="column-2">
       <%if event.id % 3 == 1 %>
+          <%= image_tag event.logo.thumb.url, :class =>"with_border"%>
+          <h3><%= event.event_name%></h3>
       <% end%>
     </div>
     <%end %>
+      <%end%>
   </div>
- <!-- <%#= form_tag  :method => :get, :html => { :class => "bs-docs-example form-horizontal"} do %>
-      <!--  <div class="grid_15"> -->
+      </div>
+<!-- <%#= form_tag  :method => :get, :html => { :class => "bs-docs-example form-horizontal"} do %>
+        <div class="grid_15">
       <div id="technology" class="tab_content rounded shadow" style="display: block;">
         <div class="box">
 
-          <% @company_events.each do |event| %>
-              <%if event.id % 3 == 0 %>
+           #@company_events.each do |event|
+              <%#if event.id % 3 == 0 %>
                   <div class="broadcast_thumb last">
-                    <%= image_tag event.logo.thumb.url, :class =>"with_border",:width=> "163" ,:height=>"92"%>
-                    <h4><%= event.event_name%></h4>
-                    <p class="mini"><%= event.start_time%></p>
+                    <%#= image_tag event.logo.thumb.url, :class =>"with_border",:width=> "163" ,:height=>"92"%>
+                    <h4><%#= event.event_name%></h4>
+                    <p class="mini"><%#= event.start_time%></p>
                   </div>
-              <% else %>
+              <%# else %>
                   <div class="broadcast_thumb">
-                    <%= image_tag event.logo.thumb.url, :class =>"with_border",:width=> "163" ,:height=>"92"%>
-                    <h4><%= event.event_name%></h4>
-                    <p class="mini"><%= event.start_time%></p>
+                    <%#= image_tag event.logo.thumb.url, :class =>"with_border",:width=> "163" ,:height=>"92"%>
+                    <h4><%#= event.event_name%></h4>
+                    <p class="mini"><%#= event.start_time%></p>
                   </div>
-              <%end%>
+              <%#end%>
 
 
         </div>
       </div>
-      <!--  </div> -->
-  <%end %>
-</div> -->
+     </div>
+  <%#end %>  -->

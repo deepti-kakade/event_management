@@ -23,6 +23,11 @@ $(document).ready(function() {
         dateFormat: 'dd/mm/yy'
        // timeFormat: "hh:mm tt"
     });
+    $('.arrow-down-actions').live('click', function(e) {
+        $('.admin-actions :not($(this).siblings("ul.admin-actions"))').hide();
+        $(this).siblings('ul').toggle();
+    });
+
 });
 
 

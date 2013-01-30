@@ -1,5 +1,14 @@
 class EventsController < ApplicationController
 
+
+  def index
+   @events = Event.all
+  end
+
+  #def show
+  #  @event = Event.find(params[:id])
+  #end
+
   def new
     @user = User.find(params[:user_id])
     logger.info("#####################################{@user.inspect}")
@@ -20,7 +29,13 @@ class EventsController < ApplicationController
     end
   end
 
-  def update_event_status
+  def event_approval
+    #render :action => :index
+  end
 
+  def update_event_status
+    @event = Event.find(params[:id])
+    @event.update_attribute(:status, params[:status])
+   # redirect_to
   end
 end

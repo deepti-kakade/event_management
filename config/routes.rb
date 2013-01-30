@@ -8,12 +8,12 @@ EventManagement::Application.routes.draw do
         collection do
           get :home
           get :admin_dashboard
-        resources :company_admins do
-          put :suspend_login
-          put :un_suspend_login
-          get :get_users
-        end
-        resources :companies
+          resources :company_admins do
+            put :suspend_login
+            put :un_suspend_login
+            get :get_users
+          end
+          resources :companies
         end
       end
       resources :company_admins do
@@ -34,16 +34,24 @@ EventManagement::Application.routes.draw do
       get :create_profile
       post :save_profile
     end
-      resources :companies do
-        member do
-          resources :events
-        end
-
+    resources :companies do
+      member do
+        resources :events
       end
+
+    end
 
   end
 
+  resources :events do
+     member do
+       put :update_event_status
+     end
+    collection do
+      get :event_approval
+    end
 
+  end
 # The priority is based upon order of creation:
 # first created -> highest priority.
 

@@ -1,1 +1,1 @@
-EVENT_STATUS = %w[pending accepted rejected]
+EVENT_STATUS = %w[approval accepted rejected]

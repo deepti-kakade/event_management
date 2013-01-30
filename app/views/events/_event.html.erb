@@ -1,0 +1,38 @@
+<tr>
+  <td>
+    <h5 class="label-4"><%= event.event_name %></h5>
+  </td>
+  <td class="fixed-width">
+    <h5 class="label-4">
+      <%= event.description %>
+    </h5>
+  </td>
+  <td>
+    <h5 class="label-4">
+      <i class="alt-a label-5 <%= get_status_class(event) %>">
+        <img class="<%= get_status_image(event) %>-img" src='<%= asset_path "#{get_status_image(event)}.png" %>'>
+        <%= event.status %>
+      </i>
+
+      <i class="alt-b label-6">
+        <img class="<%= get_status_image(event) %>-img" src='<%= asset_path "#{get_status_image(event)}.png" %>'> <%= event.status %>
+
+          <span>
+            <img class="arrow-down-b-img arrow-down-actions" src="<%= asset_path 'arrow-down-b.png' %>">
+            <ul class="admin-actions" style="display: none;">
+              <li>
+                <img class="right-b-img" src="<%= asset_path 'right-a.png' %>">
+                <%= link_to "Approve", update_event_status_event_path(:id => event.id, :status => EVENT_STATUS[1]), :method => :put %>
+              </li>
+              <li>
+                <img class="cross-a-img" src="<%= asset_path 'cross-a.png' %>">
+                <%= link_to "Reject", update_event_status_event_path(:id => event.id, :status => EVENT_STATUS[2]), :method => :put %>
+              </li>
+            </ul>
+          </span>
+
+      </i>
+
+    </h5>
+  </td>
+</tr>
