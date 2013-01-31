@@ -1,0 +1,65 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <td class="td-a">
+      <h5 class="label-3">Date</h5>
+    </td>
+    <td class="td-b">
+      <h5 class="label-3">Name</h5>
+    </td>
+    <td  class="td-c">
+      <h5 class="label-3">Description</h5>
+    </td>
+    <td  class="td-d">
+      <h5 class="label-3">Status</h5>
+    </td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @events.each do |event|%>
+      <tr>
+        <td>
+          <h5 class="label-4"><%= event.start_time %></h5>
+        </td>
+        <td>
+          <h5 class="label-4"><%= event.event_name %></h5>
+        </td>
+        <td class="fixed-width">
+          <h5 class="label-4">
+            <%= event.description %>
+          </h5>
+        </td>
+        <td class="fixed-width">
+          <h5 class="label-4">
+            <%= event.status %>
+          </h5>
+        </td>
+        <td>
+          <%= select_tag "event_status" ,options_for_select(["Accept", "Reject"]),:rel => event.id,:class => "event" %>
+
+        </td>
+  <% end %>
+  </tbody>
+</table>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $(".event").on("change",function(){
+            //alert("dsgdgsh");
+            var id = $(this).attr("rel");
+            var event_status = $(this).val();
+            $.ajax({
+                type: "POST" ,
+                url: "/company_admins/<%= current_person.id%>/events/"+id+"/update_event_status",
+                data: {status:event_status},
+                success: function () {
+                    alert("Event Status is changed");
+                }
+
+            });
+
+        });
+    });
+</script>

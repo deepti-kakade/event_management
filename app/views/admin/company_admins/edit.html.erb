@@ -3,7 +3,7 @@
     <fieldset>
       <legend>CompanyDetails</legend>
       <%= form_for @company_admin, :method => :put, :html => { :class => "form-horizontal event_signin"}  do |f|  %>
-
+          <%= render 'shared/error_messages', :object => f.object %>
           <div class="control-group">
             <%= f.label :email, "Email Id",:class =>"control-label" %>
             <div class="controls">
@@ -26,7 +26,7 @@
           <div class="control-group">
             <div class="controls">
               <div></div>
-              <div><%= f.submit "Sign Up", :class => "btn btn-primary sign-up-btn" %></div>
+              <div><%= f.submit "Update", :class => "btn btn-primary sign-up-btn" %></div>
             </div>
           </div>
 

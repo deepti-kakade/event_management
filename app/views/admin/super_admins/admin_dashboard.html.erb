@@ -2,50 +2,51 @@
 </div>
 <br>
 <div>
-  <%= form_tag  :method => :get, :html => { :class => "bs-docs-example form-horizontal"} do %>
-      <%= link_to 'Create Company Admin',new_company_admin_path ,:method => :get, :class => "btn" %>
+  <%= link_to 'Create Company Admin',new_company_admin_path ,:method => :get, :class => "btn create_company_admin" %>  </div>
+<br>
+<br>
+<div>
+  <table  class="table table-hover" id=" sfg_admin_manage_cause_table">
+    <% @companies.each do |company| %>
+        <tr>
+          <td class="show_admin_dashboard_td2">
+            <div class="control-group">
+              <%=  image_tag company.logo %>
+            </div>
+          </td>
+          <td class="show_admin_dashboard_td2">
+            <div class="control-group">
+              <%=  company.company_name %>
+            </div>
+          </td>
+          <td>
+            <div class="control-group">
+              <span class="manage_cause_span "><%=  link_to "view"  , company_path(company),:method => :get, "data-toggle" => "modal", :remote => true %></span>
+              <div id="test1">
 
-      <table  class="table table-hover" id=" sfg_admin_manage_cause_table">
-        <% @companies.each do |company| %>
-            <tr>
-              <td class="show_admin_dashboard_td2">
-                <div class="control-group">
-                  <%=  image_tag company.logo %>
-                </div>
-              </td>
-              <td class="show_admin_dashboard_td2">
-                <div class="control-group">
-                  <%=  company.company_name %>
-                </div>
-              </td>
-              <td>
-                <div class="control-group">
-                  <span class="manage_cause_span "><%=  link_to "view"  , company_path(company),:method => :get, "data-toggle" => "modal", :remote => true %></span>
-                  <div id="test1">
+              </div>
+              <span class="manage_cause_span"> <%=  link_to "edit" ,  edit_company_admin_path(company.company_admin_id), :method => :get%></span>
+              <span class="manage_cause_span"><%=  link_to "delete"  ,company_admin_path(company.company_admin_id),:confirm => 'Are you sure you want to delete this company & its admin?',:method => :delete,:id => "destroy-cause"%></span>
+              <% if company.company_admin.banned == false %>
+                  <span class="manage_cause_span"> <%=  link_to "suspend" , company_admin_suspend_login_path(company.company_admin_id), :method => :put, :id => "suspend"%></span>
+              <% else %>
+                  <span class="manage_cause_span"> <%=  link_to "unsuspend" , company_admin_un_suspend_login_path(company.company_admin_id), :method => :put, :id => "un_suspend" %></span>
+              <%end%>
+              <span class="manage_cause_span"><%= link_to "Users", company_admin_get_users_path(company), :method => :get,"data-toggle" => "modal", :remote => true%></span>
+              <span> ( <%=  count_users_of_company(company) %> ) </span>
+              <div id="company_users">
 
-                  </div>
-                  <span class="manage_cause_span"> <%=  link_to "edit" ,  edit_company_admin_path(company.company_admin_id), :method => :get%></span>
-                  <span class="manage_cause_span"><%=  link_to "delete"  ,company_admin_path(company.company_admin_id),:confirm => 'Are you sure you want to delete this company & its admin?',:method => :delete,:id => "destroy-cause"%></span>
-                  <% if company.company_admin.banned == false %>
-                      <span class="manage_cause_span"> <%=  link_to "suspend" , company_admin_suspend_login_path(company.company_admin_id), :method => :put, :id => "suspend"%></span>
-                  <% else %>
-                      <span class="manage_cause_span"> <%=  link_to "unsuspend" , company_admin_un_suspend_login_path(company.company_admin_id), :method => :put, :id => "un_suspend" %></span>
-                  <%end%>
-                  <span class="manage_cause_span"><%= link_to "Users", company_admin_get_users_path(company), :method => :get,"data-toggle" => "modal", :remote => true%></span>
-                  <span> ( <%=  count_users_of_company(company) %> ) </span>
-                  <div id="company_users">
+              </div>
 
-                  </div>
-                  <span class="manage_cause_span"> <%=  link_to "events approvals" ,events_path, :method => :get %></span>
-                </div>
-              </td>
-            </tr>
-        <%end %>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-      </table>
-  <%end %>
+            </div>
+          </td>
+        </tr>
+    <%end %>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+  </table>
+
 </div>
 
 <script type="text/javascript">

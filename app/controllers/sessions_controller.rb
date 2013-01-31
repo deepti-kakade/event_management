@@ -6,6 +6,7 @@ class SessionsController < Devise::SessionsController
 
   def create
     person = Person.find_by_email(params[:person][:email])
+
     if person.present? && person.valid_password?(params[:person][:password])
       if person.member_type.include?("company_admin")
 
@@ -40,5 +41,6 @@ class SessionsController < Devise::SessionsController
       render 'new'
     end
   end
-
 end
+
+

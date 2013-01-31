@@ -13,20 +13,19 @@
 //= require jquery
 //= require jquery-ui-1.10.0.custom
 //= require jquery_ujs
-//= require jquery-ui-timepicker-addon
+//= require jquery-ui-timepicker-addon.js
 //= require livevalidation_standalone
 //= require twitter/bootstrap
 //= require_tree .
 
 $(document).ready(function() {
-    $('#event_start_time').datepicker({
-        dateFormat: 'dd/mm/yy'
-       // timeFormat: "hh:mm tt"
-    });
-    $('.arrow-down-actions').live('click', function(e) {
-        $('.admin-actions :not($(this).siblings("ul.admin-actions"))').hide();
-        $(this).siblings('ul').toggle();
-    });
+
+
+//    $('#event_start_time').datepicker({
+//        dateFormat: 'dd/mm/yy'
+//       // timeFormat: "hh:mm tt"
+//    });
+
 
 });
 

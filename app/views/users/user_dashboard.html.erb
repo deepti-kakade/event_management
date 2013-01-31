@@ -1,35 +1,39 @@
 <%= link_to "Create Event",  new_user_event_path(@user,@user.company_id), :class => "btn"%>
+<%#= link_to "Show comment",   user_event_path(@user,@user.company_id,1), :class => "btn"%>
 <div class="row">
 </div>
 <br>
 <div>
+  <h2>Approved Events of Company</h2>
   <div id="content">
     <%= form_tag  :method => :get, :html => { :class => "bs-docs-example form-horizontal"} do %>
-    <div id="column-1">
-      <% @company_events.each do |event| %>
-      <div id="column-11">
-        <%if event.id % 3 == 2%>
-            <%= image_tag event.logo.thumb.url, :class =>"with_border"%>
-            <h3><%= event.event_name%></h3>
-        <% end%>
-      </div>
-      <div id="column-12">
-        <%if event.id % 3 == 0 %>
-            <%= image_tag event.logo.thumb.url, :class =>"with_border"%>
-            <h3><%= event.event_name%></h3>
-        <% end%>
-      </div>
-    </div>
-    <div id="column-2">
-      <%if event.id % 3 == 1 %>
-          <%= image_tag event.logo.thumb.url, :class =>"with_border"%>
-          <h3><%= event.event_name%></h3>
-      <% end%>
-    </div>
-    <%end %>
-      <%end%>
+        <div id="column-1">
+          <% @company_events.each do |event| %>
+              <%if event.status.include?("Accept")%>
+                  <div id="column-11">
+                    <%if event.id % 3 == 2%>
+                        <%= image_tag event.logo.thumb.url, :class =>"with_border"%>
+                        <h3><%= event.event_name%></h3>
+                    <% end%>
+                  </div>
+                  <div id="column-12">
+                    <%if event.id % 3 == 0 %>
+                        <%= image_tag event.logo.thumb.url, :class =>"with_border"%>
+                        <h3><%= event.event_name%></h3>
+                    <% end%>
+                  </div>
+                  </div>
+                  <div id="column-2">
+                    <%if event.id % 3 == 1 %>
+                        <%= image_tag event.logo.thumb.url, :class =>"with_border"%>
+                        <h3><%= event.event_name%></h3>
+                    <% end%>
+                  </div>
+              <% end %>
+          <%end %>
+    <%end%>
   </div>
-      </div>
+</div>
 <!-- <%#= form_tag  :method => :get, :html => { :class => "bs-docs-example form-horizontal"} do %>
         <div class="grid_15">
       <div id="technology" class="tab_content rounded shadow" style="display: block;">

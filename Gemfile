@@ -14,6 +14,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'acts_as_commentable'
 #gem 'calendar_date_select', '~> 1.16.4'
 #gem 'calendar_date_select',:git => 'http://github.com/paneq/calendar_date_select.git', :branch => 'rails3test'
 # Gems used only for assets and not required

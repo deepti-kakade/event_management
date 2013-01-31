@@ -3,7 +3,7 @@
     <fieldset>
       <legend> Create Company </legend>
       <%= form_for @company_admin, :method => :post, :html => { :class => "form-horizontal event_signin"}  do |f|  %>
-
+          <%= render 'shared/error_messages', :object => f.object %>
           <div class="control-group">
             <%= f.label :email, "Email Id",:class =>"control-label" %>
             <div class="controls">
@@ -49,17 +49,3 @@
     </fieldset>
   </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        var company_admin_email = new LiveValidation('company_admin_email');
-        company_admin_email.add( Validate.Presence );
-        company_admin_email.add( Validate.Email );
-
-        var company_name = new LiveValidation('company_admin_company_attributes_company_name');
-        company_name.add( Validate.Presence );
-
-        var company_type = new LiveValidation('company_admin_company_attributes_type_of_company');
-        company_type.add( Validate.Presence );
-
-    });
-</script>

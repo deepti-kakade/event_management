@@ -7,4 +7,10 @@ class UserMailer < ActionMailer::Base
     mail(:to => company_admin.email, :subject => "You have Signed Successfully for Company Admin" )
     return @company_admin, @password, @url
   end
+
+  def update_event_status(user)
+    @user = user
+    mail(:to => user.email, :subject => "Event Acceptance" )
+    return @user
+  end
 end

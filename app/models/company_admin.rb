@@ -6,4 +6,9 @@ class CompanyAdmin < Person
 
   attr_accessible :first_name, :last_name, :company_attributes
 
+
+  def self.generate_passwords
+    password = p SecureRandom.base64(16)
+  end
+
 end

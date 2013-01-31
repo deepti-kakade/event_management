@@ -19,8 +19,15 @@ EventManagement::Application.routes.draw do
       resources :company_admins do
         member do
           get :company_admin_dashboard
+          get :users_of_company
           get :create_user
           post :save_user
+        end
+        resources :events   do
+          member do
+            post :update_event_status
+          end
+          # resources :comments
         end
       end
       root :to => "super_admins#home"
@@ -36,22 +43,28 @@ EventManagement::Application.routes.draw do
     end
     resources :companies do
       member do
-        resources :events
+        resources :events   do
+          member do
+            post :update_event_status
+          end
+         # resources :comments
+        end
+
       end
 
     end
 
   end
 
-  resources :events do
-     member do
-       put :update_event_status
-     end
-    collection do
-      get :event_approval
-    end
-
-  end
+  #resources :events do
+  #   member do
+  #     post :update_event_status
+  #   end
+  ##  collection do
+  ##    get :event_approval
+  #  end
+  #
+  #end
 # The priority is based upon order of creation:
 # first created -> highest priority.
 

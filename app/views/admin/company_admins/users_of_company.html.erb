@@ -1,0 +1,26 @@
+<div class="row">
+</div>
+<br>
+<div>
+  <%= form_tag  :method => :get, :html => { :class => "bs-docs-example form-horizontal"} do %>
+      <div>Total Users( <%= @company_users.size%>) </div>
+      <br>
+      <br>
+      <table  class="table table-hover" id=" sfg_admin_manage_cause_table">
+        <ol>
+        <% @company_users.each do |user| %>
+            <tr>
+              <td class="show_admin_dashboard_td2">
+                <div class="control-group">
+                  <%=  user.email %>
+                </div>
+              </td>
+            </tr>
+        <%end %>
+        </ol>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+      </table>
+  <%end %>
+</div>

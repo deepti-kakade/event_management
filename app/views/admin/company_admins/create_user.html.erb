@@ -3,7 +3,7 @@
     <h1> </h1>
 
     <%= form_for @user, :url => save_user_company_admin_path(@company_admin) ,:method => :post,:html => { :class => "form-horizontal event_signin"} do |f|  %>
-
+        <%= render 'shared/error_messages', :object => f.object %>
         <div class="control-group">
           <%= f.label :email, "Email Id", :class =>"control-label" %>
           <div class="controls">

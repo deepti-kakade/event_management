@@ -5,7 +5,7 @@
       <h5 class="label-3">Date</h5>
     </td>
     <td class="td-b">
-      <h5 class="label-3">Type</h5>
+      <h5 class="label-3">Name</h5>
     </td>
     <td  class="td-c">
       <h5 class="label-3">Description</h5>
@@ -16,10 +16,50 @@
   </tr>
   </thead>
   <tbody>
-  <%#= render @events %>
-  <%#= logger.info("#####################################{@events.inspect}")%>
   <% @events.each do |event|%>
-  <%= render :partial => 'events/event', :locals => {:event => event} %>
-   <% end %>
+      <tr>
+        <td>
+          <h5 class="label-4"><%= event.start_time %></h5>
+        </td>
+        <td>
+          <h5 class="label-4"><%= event.event_name %></h5>
+        </td>
+        <td class="fixed-width">
+          <h5 class="label-4">
+            <%= event.description %>
+          </h5>
+        </td>
+        <td class="fixed-width">
+          <h5 class="label-4">
+            <%= event.status %>
+          </h5>
+        </td>
+        <td>
+          <%= select_tag "event_status" ,options_for_select(["Accept", "Reject"]),:rel => event.id,:class => "event" %>
+          <%#= select_tag options_for_select(["Accept", "Reject"]), {}, :onchange => "$.post('#{update_event_status_event_path(event)}', {'_method':'put', 'event[status]':this.value} );" %>
+        </td>
+  <% end %>
   </tbody>
 </table>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $(".event").on("change",function(){
+            //alert("dsgdgsh");
+            var id = $(this).attr("rel");
+            var event_status = $(this).val();
+            $.ajax({
+                type: "POST" ,
+                url: "/events/"+id+"/update_event_status",
+                data: {status:event_status},
+                success: function () {
+                    alert("Event Status is changed");
+                }
+
+            });
+
+        });
+    });
+</script>

@@ -1,4 +1,5 @@
 class Admin::SuperAdminsController < ApplicationController
+  before_filter :authenticate_person!
   def home
 
   end

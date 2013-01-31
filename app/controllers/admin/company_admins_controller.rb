@@ -1,12 +1,15 @@
 class Admin::CompanyAdminsController < ApplicationController
 
+  before_filter :authenticate_person!
+
   def new
     @company_admin = CompanyAdmin.new()
     @company_admin.build_company
   end
 
   def create
-    password = p SecureRandom.base64(16)
+    #password = p SecureRandom.base64(16)
+    password = CompanyAdmin.generate_passwords
     @company_admin = CompanyAdmin.new(params[:company_admin])
     @company_admin.password = password
     @company_admin.member_type = "company_admin"
@@ -14,10 +17,10 @@ class Admin::CompanyAdminsController < ApplicationController
     @company = @company_admin.build_company
     @company.attributes = params[:company_admin][:company_attributes]
 
-    if @company_admin.save!
+    if @company_admin.save
       UserMailer.registration_email(@company_admin, password).deliver
       redirect_to admin_dashboard_super_admins_path
-      flash[:success] = "Email has sent successfully"
+      flash[:success] = "Email has sent to company admin successfully"
     else
       render 'new'
     end
@@ -32,7 +35,7 @@ class Admin::CompanyAdminsController < ApplicationController
     password = params[:company_admin][:password]
 
     if @company_admin.update_attributes(params[:company_admin])
-      flash[:success]= "Company Admin Password changed"
+      flash[:success]= "Company admin password changed & mail is sent to company admin"
       UserMailer.registration_email(@company_admin, password).deliver
       #redirect_to   show_admin_dashboard_admins_path
     else
@@ -42,11 +45,15 @@ class Admin::CompanyAdminsController < ApplicationController
 
   def destroy
     CompanyAdmin.find(params[:id]).destroy
-    flash[:success] = "Company Admin and Company Destroyed."
+    flash[:success] = "Company admin and it's company is destroyed."
     redirect_to admin_dashboard_super_admins_path
   end
 
   def company_admin_dashboard
+
+  end
+
+  def users_of_company
     @company_admin = CompanyAdmin.find(current_person.id)
     @company_users = @company_admin.company.users
   end
@@ -63,7 +70,7 @@ class Admin::CompanyAdminsController < ApplicationController
     @user =  @company.users.create(params[:user])
     @user.member_type = "user"
     @user.banned = false
-    if @user.save!
+    if @user.save
       UserMailer.registration_email(@user, @user.password).deliver
       flash[:success] = "User Created Successfully"
       redirect_to company_admin_dashboard_company_admin_path

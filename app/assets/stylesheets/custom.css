@@ -2,6 +2,9 @@
     margin-top: 100px;
 }
 
+.create_company_admin{
+    float: right;
+}
 /*footer*/
 #sfg_footer {
     position: fixed;
@@ -252,114 +255,3 @@ img.image-main {
     padding: 0;
 }
 
-.clip-b-img, .question-a-img, .arrow-down-b-img,.right-b-img,.clip-a-img, .plus-a-img,.right-a-img,.cross-a-img {
-    margin: 0px 5px;
-}
-.question-a-img,  .arrow-down-b-img,.right-b-img,.clip-a-img,.right-a-img,.cross-a-img{
-    position: relative;
-    top:2px;
-}
-.arrow-down-b-img:hover{
-    cursor: pointer;
-}
-
-.mtop80 {
-    margin-top: 80px;
-}
-.label-3{
-    font-size: 13px;
-    color: #000;
-    font-weight: bold;
-}
-table-a tbody tr:hover{
-    background-color: #9a9a9a;
-}
-.table-a tbody tr:hover td{
-    border-right:1px solid transparent;
-}
-.table-a tbody tr:hover .alt-a{
-    display: none;
-}
-.table-a tbody tr:hover .alt-b{
-    display: block;
-}
-.table-a tbody tr:hover .label-4{
-    color: #fff;
-}
-.td-d{
-    width:120px;
-}
-
-.label-4 .red{
-    color: #ff0000;
-}
-.label-4 .green{
-    color: #2cac0f;
-}
-
-.fixed-width {
-    width: 350px;
-}
-.alt-a,.alt-b{
-    position: relative;
-}
-
-.label-5{
-    color: #7f7f7f;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-
-.table-a tbody tr:hover .alt-b .admin-actions {
-    display: none;
-}
-
-.table-a tbody tr:hover .alt-a{
-    display: none;
-}
-alt-b{
-    display: none;
-}
-.table-a tbody tr:hover .alt-b{
-    display: block;
-}
-
-.label-6{
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.arrow-down-b-img {
-    position: absolute;
-    right: 15px;
-}
-
-
-.admin-actions {
-    position: absolute;
-    background-color: white;
-    border: 1px solid;
-    padding: 5px;
-    width: 85px;
-    margin: 3px 0 0 5px;
-    z-index: 10;
-}
-
-.admin-actions li {
-    padding-bottom: 5px;
-}
-
-#admin-actions li a {
-    font-weight: bold;
-}
-
-.arrow-down-b-img {
-    position: absolute;
-    right: 15px;
-}
-
-.table-a tbody tr:hover .alt-b .admin-actions {
-    display: none;
-}

@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="span7" style="float: left;">
+    <div class="well the-fieldset">
+      <div id="heading_recent_post">
+        <legend class="the-legend"> Events </legend>
+      </div>
+      <div class="pagination">
+        <ol class="posts">
+          <li>
+            <div class="row">
+              <div class="webo-video-image">
+                <% if @event.logo?  %>
+                    <div class="span2">
+                      <%= image_tag @event.logo, :size => '80x80', :class => 'webo-image' %>
+                    </div>
+                <% end %>
+
+              </div>
+              <div class="span2 content">
+                <%= @event.description %>
+              </div>
+              <div class="">
+                <%#= link_to "Delete", user_post_path(@post.user_id,@post),:confirm => 'Are you sure you want to delete this post?', :method => :delete, :id => 'webo-delete-link' %>
+              </div>
+              <div class="timestamp">
+                Posted <%#= time_ago_in_words(@post.created_at) %> ago.
+              </div>
+
+            </div>
+
+            <div class="row">
+              <ol>
+                <% @nested_comment_list.each do |parent_child| %>
+                    <li class="comment odd alt thread-even depth-1" id="li-comment-<%= parent_child["comment"]["id"]%>">
+                      <div id="comment-<%= parent_child["comment"]["id"]%>" class="first-comment">
+                        <div class="entry-comment-meta">
+                          <div class="comment-author-link">
+                            <%= @user_who_commented.first_name %>
+                          </div><!-- comment-author-link -->
+                          <div class="comment-date-link">
+                            <%= parent_child["comment"]["created_at"] %>
+                          </div><!-- comment-date-link -->
+                          <p><%= parent_child["comment"]["comment"] %></p>
+                        </div><!-- entry-comment-meta -->
+
+                        <div class="replay-buttton">
+                          <a class="comment-reply-link" href="#webo-reply-comment" rel ="<%= parent_child["comment"]["id"]%>">Reply</a>
+                        </div><!-- replay-buttton -->
+                      </div> <!-- end #comment-ID -->
+
+                      <ol class="children">
+                        <% parent_child["child_comments"].each do |child| %>
+                            <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-<%= child["id"]%>">
+                              <div id="comment-<%= child["id"]%>" class="first-comment">
+                                <div class="entry-comment-meta">
+                                  <div class="comment-author-link">
+                                    <%#= @user_who_commented.name %>
+                                  </div><!-- comment-author -->
+                                  <div class="comment-date-link">
+                                    <%= child["created_at"] %>
+                                  </div><!-- comment-date -->
+                                  <p><%= child["comment"] %> </p>
+                                </div><!-- entry-comment-meta -->
+
+                                <div class="replay-buttton">
+
+                                </div><!-- replay-buttton -->
+                              </div> <!-- end #comment-ID -->
+                            </li>
+                        <% end %>
+                      </ol>
+                    </li>
+                <% end %>
+              </ol>
+            </div>
+            <div class="row">
+              <div class="span5 offset1" id="webo-reply-comment">
+                <%= form_for [@event, @comment], :url =>  user_event_comments_path(@event.user_id,@event.company_id,@event), :method => :post do |f|%>
+                    <%= hidden_field_tag :parent_id, nil %>
+                    <p><%= f.text_area :content, :size => '80x2', :id => 'webo-comment-textarea' %></p>
+                    <p><%= f.submit "Post Comment"%></p>
+                <% end %>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".comment-reply-link").on("click",function(){
+            var id = $(this).attr("rel");
+            $("#parent_id").val(id);
+
+        });
+    });
+</script>

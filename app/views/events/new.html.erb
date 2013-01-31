@@ -3,7 +3,7 @@
     <fieldset>
       <legend> Create Event </legend>
       <%= form_for @event, :url => user_events_path ,:method => :post, :html => { :class => "form-horizontal event_signin"}  do |f|  %>
-
+          <%= render 'shared/error_messages', :object => f.object %>
           <div class="control-group">
             <%= f.label :event_name ,"Event Name ", :class =>"control-label"  %>
             <div class="controls">
@@ -25,14 +25,14 @@
           <div class="control-group">
             <%= f.label :start_time, "Start Time",:class =>"control-label" %>
             <div class="controls">
-              <%= f.text_field  :start_time, :class => "hasDatepicker", :id => "event_start_time"%>
+              <%= f.text_field :start_time, :id => 'event_start_time'%>
 
             </div>
           </div>
           <div class="control-group">
             <%= f.label :end_time, "End Time",:class =>"control-label" %>
             <div class="controls">
-              <%= f.text_field :end_time, :class => 'text_field'%>
+              <%= f.text_field :end_time, :id => 'event_end_time'%>
             </div>
           </div>
 
@@ -48,21 +48,78 @@
   </div>
 </div>
 
-<!--<script type="text/javascript">-->
-<!--//    $(document).ready(function() {-->
-<!--//-->
-<!--//        $('#event_start_time').datetimepicker({-->
-<!--//            timeFormat: "hh:mm tt"-->
-<!--//        });-->
-<!--//       var event_name = new LiveValidation('event_event_name');-->
-<!--//       event_name.add( Validate.Presence );-->
-<!--//-->
-<!--//        var start_time = new LiveValidation('event_start_time');-->
-<!--//        start_time.add( Validate.Presence );-->
-<!--//-->
-<!--//        var end_time = new LiveValidation('event_end_time');-->
-<!--//        end_time.add( Validate.Presence );-->
-<!--//-->
-<!--//-->
-<!--//    });-->
-<!--</script>-->
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#event_start_time').datetimepicker({
+            //timeFormat: "hh:mm tt"
+            onClose: function(dateText, inst) {
+                var saranteststartDateTime = new Date(dateText).getTime();
+                var sarantestendDateTime = new Date($('#event_end_time').val()).getTime();
+
+                if (sarantestendDateTime <  saranteststartDateTime)
+                    alert('EndTime is lesser then Start Time');
+
+                var endDateTextBox = $('#event_end_time');
+                if (endDateTextBox.val() != '') {
+                    var testStartDate = new Date(dateText);
+                    var testEndDate = new Date(endDateTextBox.val());
+                    if (testStartDate > testEndDate) {
+                        endDateTextBox.val(dateText);
+                        alert("End date should be greater than Start date");
+                    }
+                }
+                else {
+                    //endDateTextBox.val(dateText);
+                }
+            },
+            onSelect: function (selectedDateTime){
+                // var start = $(this).datetimepicker('getDate');
+                // $('#example16_end').datetimepicker('option', 'minDate', new Date(start.getTime()));
+            }
+        });
+        $('#event_end_time').datetimepicker({
+
+            //timeFormat: "hh:mm tt"
+
+            onClose: function(dateText, inst) {
+                var startDateTextBox = $('#event_start_time');
+                if (startDateTextBox.val() != '') {
+                    var testStartDate = new Date(startDateTextBox.val());
+                    var testEndDate = new Date(dateText);
+                    if (testStartDate > testEndDate) {
+                        startDateTextBox.val(dateText);
+                        alert("End Date should be greater than Start Date");
+                    }
+                }
+                else {
+                    // startDateTextBox.val(dateText);
+                }
+            },
+            onSelect: function (selectedDateTime){
+                // var end = $(this).datetimepicker('getDate');
+                //$('#example16_start').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+            }
+        });
+       // $('#event_start_time').datetimepicker();
+
+
+       var event_name = new LiveValidation('event_event_name');
+       event_name.add( Validate.Presence );
+
+        var start_time = new LiveValidation('event_start_time');
+        start_time.add( Validate.Presence );
+
+        var end_time = new LiveValidation('event_end_time');
+        end_time.add( Validate.Presence );
+
+        var fromDate = $("#event_start_time").val();
+        var toDate = $("#event_end_time").val();
+
+
+        if (Date.parse(fromDate) > Date.parse(toDate)) {
+            alert("Invalid Date Range!\nStart Date cannot be after End Date!")
+            return false;
+        }
+    });
+</script>
